@@ -70,7 +70,7 @@ unsigned long long dec(string todec, unsigned long long arg1, unsigned long long
 	for(int i=0;i<6;i++)
 	{
 		r+=(dictio.find(todec[s[i]])->second)*(pow(58,i));
-		//cout<<(dictio.find(todec[s[i]])->second)<<endl;
+		cout<<(dictio.find(todec[s[i]])->second)<<endl;
 	}
 	return (r-arg2)^arg1;
 }
