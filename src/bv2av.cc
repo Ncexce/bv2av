@@ -62,13 +62,13 @@ string enc(unsigned long long toenc, unsigned long long arg1, unsigned long long
 	string tstr="BV1  4 1 7  ";
 	for(int i=0;i<6;i++)
 	{
-		tstr[s[i]]=table[static_cast<unsigned long long>(floor(toenc/(pow(58,i))))%58];
-		cout<<(static_cast<unsigned long long>(floor(toenc/(pow(58,i))))%58)<<endl;
+		tstr[s[i]]=table[static_cast<unsigned long long>(floor(temp1/(pow(58,i))))%58LL];
+		//cout<<(static_cast<unsigned long long>(floor(temp1/(pow(58,i))))%58)<<endl;
 	}
 	return tstr;
 }
 
-//reference: indexing a map: usage: map_name.find(key)->second, returning a value the key holds.
+//annotation: indexing a map: usage: map_name.find(key)->second, returning a value the key holds.
 unsigned long long dec(string todec, unsigned long long arg1, unsigned long long arg2, indexer dictio)
 {
 	unsigned long long r=0;
