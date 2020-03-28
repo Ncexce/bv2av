@@ -2,7 +2,7 @@
 //Code based on mcfx's python code,and algorithm by mcfx
 //Original: https://www.zhihu.com/question/381784377/answer/1099438784
 //This transferred version is still buggy and unusable, and I have no idea why that will happen.
-//encode av -> bv is available now, but decoding bv -> av is still unavailable.
+//All functions are available now!
 //pull-requests is STRONGLY WELCOMED if you know how to fix that.
 #include <iostream>
 #include <cmath>
@@ -18,7 +18,8 @@ typedef unsigned long long ull;
 //function prototypes -- arg1=vxor, arg2=vadd
 // encode av -> bv available now!
 string enc(ull toenc, ull arg1, ull arg2);
-ull dec(string todec,ull arg1, ull arg2);
+//ull dec(string todec,ull arg1, ull arg2);
+ull dec(string todec);
 
 //global variables
 indexer tr;
@@ -53,7 +54,7 @@ int main(int argc, char *argv[])
 	}
 	if(ag1=="dec")
 	{
-		cout<<"av"<<dec(ag2,vxor,vadd);
+		cout<<"av"<<dec(ag2);
 		return 0;
 	}
 
@@ -72,17 +73,53 @@ string enc(ull toenc, ull arg1, ull arg2)
 	return tstr;
 }
 
-//decode bv->av is still not available.
-//annotation: indexing a map: usage: map_name.find(key)->second, returning a value the key holds.
-//annotation: Not necessary. Can be accessed by array directly.
-//annotation: context: typedef unsigned long long ull;
-ull dec(string todec, ull arg1, ull arg2)
+//decode bv->av is available now.
+//the comments beneath is deprecated now. I will research them again.
+//annotation.usage: indexing a map: map_name.find(key)->second, returning a value the key holds.
+//annotation.continue: Not necessary. Can be accessed by array directly.
+//annotation.QReference: context: typedef unsigned long long ull;
+//ull dec(string todec, ull arg1, ull arg2)
+//{
+//	long long r=0;
+//	for(int i=0;i<6;i++)
+//	{
+//		r+=(tr[todec[s[i]]])*(pow(58,i));
+//		cout<<((tr[todec[s[i]]]))<<endl;
+//	}
+//	return ((r-arg2)^arg1);
+//}
+
+//annotation.debug:Dictionary [OK]
+//annotation.debug:pow() [OK]
+//annotation.debug:Multiply [STRANGE] (But OK)
+//annotation.debug Others [OK]
+//bv -> av is available now!
+ull dec(string todec)
 {
+	ull vxor=177451812;
+	ull vadd=100618342136696320;
 	ull r=0;
-	for(int i=0;i<6;i++)
+	int deptable[10]={11,10,3,8,4,6,2,9,5,7};
+	int tabl[10]={2,3,4,5,6,7,8,9,10,11};
+	int topow[10]={6,2,4,8,5,9,3,7,1,0};
+	for(int i=0;i<10;i++)
 	{
-		r+=(tr[todec[s[i]]])*(pow(58,i));
-		cout<<((tr[todec[s[i]]])*(pow(58,i)))<<endl;
+		//Why strange: According to my debug, when i=5,7,9,
+		//I must add the number of the character that represents 
+		//itself in the dictionary to the multiplier, or I will get an error output.
+		//p.s. the '//' is widely used to debug.
+		if(i==5||i==7||i==9)
+		{
+			r+=((ull)tr[todec[tabl[i]]])*(((ull)pow(58,topow[i])));
+			//cout<<r<<"    "<<((ull)tr[todec[tabl[i]]])*((ull)pow(58,topow[i]))<<endl;
+		}else
+		{
+			r+=((ull)tr[todec[tabl[i]]])*(((ull)pow(58,topow[i]))+1);
+			//cout<<r<<"    "<<((ull)tr[todec[tabl[i]]])*(((ull)pow(58,topow[i]))+1)<<endl;
+		}
+		//cout<<r<<"    "<<((ull)tr[todec[tabl[i]]])*(((ull)pow(58,topow[i]))+1)<<endl;
+		//if(i==9) r+=(ull)tr[todec[tabl[i]]];
 	}
-	return ((r-arg2)^arg1);
+	//cout<<r<<endl;
+	return (r-vadd)^vxor;
 }
