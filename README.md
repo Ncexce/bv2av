@@ -7,12 +7,12 @@ An av <=> bv converter, command-line program.
 ## Status
 
 av => bv: available  
-bv => av: Initially identified as available
+bv => av: available
 
 ## Branch Individual Info
 
 branch name: Future_research  
-Description: To research the length=4 array decoding (Temporarily)  
+Description: Waiting for next research
 
 > ###### You can ignore this. Really.
 
