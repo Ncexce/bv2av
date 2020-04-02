@@ -80,11 +80,17 @@ string enc(ull toenc, ull arg1, ull arg2)
 //annotation.QReference: context: typedef unsigned long long ull;
 ull dec(string todec, ull arg1, ull arg2)
 {
-	long long r=0;
+	ull r=0;
 	for(int i=0;i<6;i++)
 	{
-		r+=(tr[todec[s[i]]])*(pow(58,i));
-		cout<<r<<"    "<<((tr[todec[s[i]]]))<<endl;
+		if(i==0)
+		{
+			r+=(tr[todec[s[i]]])*((ull)pow(58,i));
+			cout<<r<<"    "<<(tr[todec[s[i]]])<<"    "<<(tr[todec[s[i]]])*((ull)pow(58,i)+1)<<endl;
+			continue;
+		}
+		r+=(tr[todec[s[i]]])*((ull)pow(58,i)+1);
+		cout<<r<<"    "<<(tr[todec[s[i]]])<<"    "<<(tr[todec[s[i]]])*((ull)pow(58,i))<<endl;
 	}
 	cout<<r<<endl;
 	return ((r-arg2)^arg1);

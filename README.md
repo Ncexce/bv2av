@@ -7,7 +7,7 @@ An av <=> bv converter, command-line program.
 ## Status
 
 av => bv: available  
-bv => av: researching
+bv => av: Initially identified as available
 
 ## Branch Individual Info
 
@@ -19,3 +19,4 @@ Description: To research the length=4 array decoding (Temporarily)
 ======Cut======
 
 > ###### Mainly because I may write out some stupid code in this branch.
+
