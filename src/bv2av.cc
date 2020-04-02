@@ -54,7 +54,7 @@ int main(int argc, char *argv[])
 	}
 	if(ag1=="dec")
 	{
-		cout<<"av"<<dec(ag2,vxor,vadd);
+		cout<</*"av"<<*/dec(ag2,vxor,vadd);
 		return 0;
 	}
 
@@ -84,8 +84,9 @@ ull dec(string todec, ull arg1, ull arg2)
 	for(int i=0;i<6;i++)
 	{
 		r+=(tr[todec[s[i]]])*(pow(58,i));
-		cout<<((tr[todec[s[i]]]))<<endl;
+		cout<<r<<"    "<<((tr[todec[s[i]]]))<<endl;
 	}
+	cout<<r<<endl;
 	return ((r-arg2)^arg1);
 }
 
