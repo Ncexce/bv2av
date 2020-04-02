@@ -1,4 +1,4 @@
-//bv2av, a av and bv converter for bilibili
+//bv2av, an av and bv converter for bilibili
 //Code based on mcfx's python code,and algorithm by mcfx
 //Original: https://www.zhihu.com/question/381784377/answer/1099438784
 //This transferred version is still buggy and unusable, and I have no idea why that will happen.
