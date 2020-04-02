@@ -18,8 +18,8 @@ typedef unsigned long long ull;
 //function prototypes -- arg1=vxor, arg2=vadd
 // encode av -> bv available now!
 string enc(ull toenc, ull arg1, ull arg2);
-//ull dec(string todec,ull arg1, ull arg2);
-ull dec(string todec);
+ull dec(string todec,ull arg1, ull arg2);
+//ull dec(string todec);
 
 //global variables
 indexer tr;
@@ -54,7 +54,7 @@ int main(int argc, char *argv[])
 	}
 	if(ag1=="dec")
 	{
-		cout<<"av"<<dec(ag2);
+		cout<<"av"<<dec(ag2,vxor,vadd);
 		return 0;
 	}
 
@@ -78,18 +78,18 @@ string enc(ull toenc, ull arg1, ull arg2)
 //annotation.usage: indexing a map: map_name.find(key)->second, returning a value the key holds.
 //annotation.continue: Not necessary. Can be accessed by array directly.
 //annotation.QReference: context: typedef unsigned long long ull;
-//ull dec(string todec, ull arg1, ull arg2)
-//{
-//	long long r=0;
-//	for(int i=0;i<6;i++)
-//	{
-//		r+=(tr[todec[s[i]]])*(pow(58,i));
-//		cout<<((tr[todec[s[i]]]))<<endl;
-//	}
-//	return ((r-arg2)^arg1);
-//}
+ull dec(string todec, ull arg1, ull arg2)
+{
+	long long r=0;
+	for(int i=0;i<6;i++)
+	{
+		r+=(tr[todec[s[i]]])*(pow(58,i));
+		cout<<((tr[todec[s[i]]]))<<endl;
+	}
+	return ((r-arg2)^arg1);
+}
 
-//annotation.debug:Dictionary [OK]
+/*//annotation.debug:Dictionary [OK]
 //annotation.debug:pow() [OK]
 //annotation.debug:Multiply [STRANGE] (But OK)
 //annotation.debug Others [OK]
@@ -122,4 +122,4 @@ ull dec(string todec)
 	}
 	//cout<<r<<endl;
 	return (r-vadd)^vxor;
-}
+}*/
