@@ -112,7 +112,7 @@ ull dec(string todec)
 	for(int i=0;i<10;i++)
 	{
 		//Why strange: According to my debug, when i=5,7,9,
-		//I must add the number of the character that represents 
+		//I must add the number of the character that represents
 		//itself in the dictionary to the multiplier, or I will get an error output.
 		//p.s. the '//' is widely used to debug.
 		if(i==5||i==7||i==9)
