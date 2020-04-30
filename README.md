@@ -17,7 +17,7 @@ Branch Individual Info
 ----------------------
 
 branch name: Future_research  
-Description: Waiting for next research
+Description: Developing libbvavc API
 
 > ###### You can ignore this. Really.
 
